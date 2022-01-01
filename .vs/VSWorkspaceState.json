@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\build\\Windows\\VisualStudio",
+    "\\build\\Windows\\VisualStudio\\Debug",
+    "\\build\\Windows\\VisualStudio\\Release",
+    "\\build\\Windows\\vscode",
+    "\\dist",
+    "\\dist\\DEBUG",
+    "\\out\\build",
+    "\\out\\build\\x64-Debug"
+  ],
+  "SelectedNode": "\\dist\\Shaders",
+  "PreviewInSolutionExplorer": false
+}

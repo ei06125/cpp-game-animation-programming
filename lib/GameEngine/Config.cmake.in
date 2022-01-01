@@ -1,0 +1,37 @@
+@PACKAGE_INIT@
+
+include ( "${CMAKE_CURRENT_LIST_DIR}/GameEngineTargets.cmake" )
+
+# import glad
+set(glad_DIR "C://dev/AnimationProject/GameEngine/ThirdPartySDKs/glad")
+find_package(glad 1.0 REQUIRED)
+
+# import nuklear
+set(nuklear_DIR
+    "C://dev/AnimationProject/GameEngine/ThirdPartySDKs/nuklear"
+)
+find_package(nuklear 1.0 REQUIRED)
+
+# import cgltf
+set(cgltf_DIR "C://dev/AnimationProject/GameEngine/ThirdPartySDKs/cgltf")
+find_package(cgltf 1.0 REQUIRED)
+
+# import stb_image
+set(stb_image_DIR
+    "C://dev/AnimationProject/GameEngine/ThirdPartySDKs/stb_image"
+)
+find_package(stb_image 1.0 REQUIRED)
+
+# import Math Library
+set(MathLibrary_DIR
+    "C://dev/AnimationProject/GameEngine/CoreSystems/MathLibrary"
+)
+find_package(MathLibrary 1.0 REQUIRED)
+
+# import Renderer Engine
+set(RendererEngine_DIR "C://dev/AnimationProject/GameEngine/RendererEngine")
+find_package(RendererEngine 1.0 REQUIRED)
+
+# import Animation System
+set(AnimationSystem_DIR "C://dev/AnimationProject/GameEngine/AnimationSystem")
+find_package(AnimationSystem 1.0 REQUIRED)
