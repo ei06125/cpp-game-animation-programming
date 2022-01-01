@@ -1,8 +1,8 @@
-#include "Samples/Chapter06Sample01.h"
-#include "CoreSystems/MathLibrary/mat4.h"
-#include "CoreSystems/MathLibrary/quat.h"
-#include "RendererEngine/Draw.h"
-#include "RendererEngine/Uniform.h"
+#include "Chapter06Sample01.h"
+#include "mat4.h"
+#include "quat.h"
+#include "Draw.h"
+#include "Uniform.h"
 
 void Chapter06Sample01::Initialize()
 {

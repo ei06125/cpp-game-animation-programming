@@ -1,16 +1,21 @@
 # =============================================================================
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+
   cmake_minimum_required(VERSION 3.21)
+  project(glad)
+
   if(POLICY CMP0077)
     cmake_policy(SET CMP0077 NEW)
   endif()
-  project(glad)
+
   if(NOT MSVC)
     include(GNUInstallDirs)
   else()
     set(CMAKE_INSTALL_PREFIX "C:/dev/AnimationProject")
   endif()
+
   include(CMakePackageConfigHelpers)
+
 endif()
 
 # =============================================================================

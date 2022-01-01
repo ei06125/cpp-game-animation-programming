@@ -1,17 +1,41 @@
 # =============================================================================
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+
   cmake_minimum_required(VERSION 3.21)
   project(AnimationSystemProject)
+
   if(POLICY CMP0077)
     cmake_policy(SET CMP0077 NEW)
   endif()
+
   if(NOT MSVC)
     include(GNUInstallDirs)
   else()
     set(CMAKE_INSTALL_PREFIX "C:/dev/AnimationProject")
   endif()
+
   include(CMakePackageConfigHelpers)
+
   set(CMAKE_DEBUG_POSTFIX d)
+
+  # import glad
+  set(glad_DIR "C://dev/AnimationProject/GameEngine/ThirdPartySDKs/glad")
+  find_package(glad 1.0 REQUIRED)
+
+  # import cgltf
+  set(cgltf_DIR "C://dev/AnimationProject/GameEngine/ThirdPartySDKs/cgltf")
+  find_package(cgltf 1.0 REQUIRED)
+
+  # import Math Library
+  set(MathLibrary_DIR
+      "C://dev/AnimationProject/GameEngine/CoreSystems/MathLibrary"
+  )
+  find_package(MathLibrary 1.0 REQUIRED)
+
+  # import Renderer Engine
+  set(RendererEngine_DIR "C://dev/AnimationProject/GameEngine/RendererEngine")
+  find_package(RendererEngine 1.0 REQUIRED)
+
 endif()
 
 # =============================================================================
@@ -23,24 +47,6 @@ file(GLOB_RECURSE AnimationSystem_HEADERS "*.[h|hpp]")
 message(DEBUG "AnimationSystem_SOURCES: ${AnimationSystem_SOURCES}")
 message(DEBUG "AnimationSystem_HEADERS: ${AnimationSystem_HEADERS}")
 target_sources(AnimationSystem PRIVATE ${AnimationSystem_SOURCES})
-
-# import glad
-set(glad_DIR "C://dev/AnimationProject/GameEngine/ThirdPartySDKs/glad")
-find_package(glad 1.0 REQUIRED)
-
-# import cgltf
-set(cgltf_DIR "C://dev/AnimationProject/GameEngine/ThirdPartySDKs/cgltf")
-find_package(cgltf 1.0 REQUIRED)
-
-# import Math Library
-set(MathLibrary_DIR
-    "C://dev/AnimationProject/GameEngine/CoreSystems/MathLibrary"
-)
-find_package(MathLibrary 1.0 REQUIRED)
-
-# import Renderer Engine
-set(RendererEngine_DIR "C://dev/AnimationProject/GameEngine/RendererEngine")
-find_package(RendererEngine 1.0 REQUIRED)
 
 target_link_libraries(
   AnimationSystem

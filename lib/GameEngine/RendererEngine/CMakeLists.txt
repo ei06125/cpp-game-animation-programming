@@ -1,17 +1,39 @@
 # =============================================================================
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+
   cmake_minimum_required(VERSION 3.21)
+  project(RendererEngineProject)
+
   if(POLICY CMP0077)
     cmake_policy(SET CMP0077 NEW)
   endif()
-  project(RendererEngine)
+
   if(NOT MSVC)
     include(GNUInstallDirs)
   else()
     set(CMAKE_INSTALL_PREFIX "C:/dev/AnimationProject")
   endif()
+
   include(CMakePackageConfigHelpers)
+
   set(CMAKE_DEBUG_POSTFIX d)
+
+  # import glad
+  set(glad_DIR "C://dev/AnimationProject/GameEngine/ThirdPartySDKs/glad")
+  find_package(glad 1.0 REQUIRED)
+
+  # import stb_image
+  set(stb_image_DIR
+      "C://dev/AnimationProject/GameEngine/ThirdPartySDKs/stb_image"
+  )
+  find_package(stb_image 1.0 REQUIRED)
+
+  # import Math Library
+  set(MathLibrary_DIR
+      "C://dev/AnimationProject/GameEngine/CoreSystems/MathLibrary"
+  )
+  find_package(MathLibrary 1.0 REQUIRED)
+
 endif()
 
 # =============================================================================
@@ -23,22 +45,6 @@ file(GLOB_RECURSE RendererEngine_HEADERS "*.[h|hpp]")
 message(DEBUG "RendererEngine_SOURCES: ${RendererEngine_SOURCES}")
 message(DEBUG "RendererEngine_HEADERS: ${RendererEngine_HEADERS}")
 target_sources(RendererEngine PRIVATE ${RendererEngine_SOURCES})
-
-# import glad
-set(glad_DIR "C://dev/AnimationProject/GameEngine/ThirdPartySDKs/glad")
-find_package(glad 1.0 REQUIRED)
-
-# import stb_image
-set(stb_image_DIR
-    "C://dev/AnimationProject/GameEngine/ThirdPartySDKs/stb_image"
-)
-find_package(stb_image 1.0 REQUIRED)
-
-# import Math Library
-set(MathLibrary_DIR
-    "C://dev/AnimationProject/GameEngine/CoreSystems/MathLibrary"
-)
-find_package(MathLibrary 1.0 REQUIRED)
 
 target_link_libraries(
   RendererEngine

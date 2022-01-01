@@ -1,22 +1,36 @@
 # =============================================================================
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+
   cmake_minimum_required(VERSION 3.21)
   project(GameEngineProject)
+
   if(POLICY CMP0077)
     cmake_policy(SET CMP0077 NEW)
   endif()
+
+  if(POLICY CMP0128)
+    cmake_policy(SET CMP0128 NEW)
+  endif()
+
   if(NOT MSVC)
     include(GNUInstallDirs)
   else()
     set(CMAKE_INSTALL_PREFIX "C:/dev/AnimationProject")
   endif()
-  include(CMakePackageConfigHelpers)
-  set(CMAKE_DEBUG_POSTFIX d)
-endif()
 
-# =============================================================================
-# add components add_subdirectory(ThirdPartySDKs) add_subdirectory(CoreSystems)
-# add_subdirectory(RendererEngine) add_subdirectory(AnimationSystem)
+  include(CMakePackageConfigHelpers)
+
+  set(CMAKE_DEBUG_POSTFIX d)
+
+  # find components
+  message(FATAL_ERROR "NOT HERE")
+else()
+  # add components
+  add_subdirectory(ThirdPartySDKs)
+  add_subdirectory(CoreSystems)
+  add_subdirectory(RendererEngine)
+  add_subdirectory(AnimationSystem)
+endif()
 
 # =============================================================================
 # create library

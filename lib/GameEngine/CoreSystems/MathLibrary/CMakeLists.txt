@@ -1,23 +1,29 @@
 # =============================================================================
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+
   cmake_minimum_required(VERSION 3.21)
+  project(MathLibraryProject)
+
   if(POLICY CMP0077)
     cmake_policy(SET CMP0077 NEW)
   endif()
-  project(MathLibrary)
+
+  if(POLICY CMP0128)
+    cmake_policy(SET CMP0128 NEW)
+  endif()
+
   if(NOT MSVC)
     include(GNUInstallDirs)
   else()
     set(CMAKE_INSTALL_PREFIX "C:/dev/AnimationProject")
   endif()
+
   include(CMakePackageConfigHelpers)
 endif()
 
 # =============================================================================
 # create library
-add_library(MathLibrary)
-
-add_library(CoreSystems::MathLibrary ALIAS MathLibrary)
+add_library(MathLibrary SHARED)
 
 # add sources
 file(GLOB_RECURSE MathLibrary_SOURCES "*.cpp")
@@ -29,6 +35,8 @@ target_sources(MathLibrary PRIVATE ${MathLibrary_SOURCES})
 # create a module definition (.def) file with all global symbols found in the
 # input .obj files for a SHARED library
 set_target_properties(MathLibrary PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS ON)
+
+add_library(GameEngine::CoreSystems::MathLibrary ALIAS MathLibrary)
 
 # =============================================================================
 # add include directories

@@ -1,24 +1,30 @@
 # =============================================================================
 if(CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
+
   cmake_minimum_required(VERSION 3.21)
-  project(nuklear)
+  project(nuklearProject)
+
   if(POLICY CMP0077)
     cmake_policy(SET CMP0077 NEW)
   endif()
+
   if(NOT MSVC)
     include(GNUInstallDirs)
   else()
     set(CMAKE_INSTALL_PREFIX "C:/dev/AnimationProject")
   endif()
+
   include(CMakePackageConfigHelpers)
+
+  set(glad_DIR "${CMAKE_INSTALL_PREFIX}/GameEngine/ThirdPartySDKs/glad")
+
+  find_package(glad 1.0)
+
 endif()
 
 # =============================================================================
 # create library
 add_library(nuklear SHARED nuklear.c)
-
-set(glad_DIR "${CMAKE_INSTALL_PREFIX}/GameEngine/ThirdPartySDKs/glad")
-find_package(glad 1.0)
 
 target_link_libraries(nuklear PRIVATE GameEngine::ThirdPartySDKs::glad)
 

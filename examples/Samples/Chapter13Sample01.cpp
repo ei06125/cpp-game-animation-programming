@@ -6,7 +6,8 @@ void Chapter13Sample01::Initialize() {
 	mSolver.Resize(3);
 	mSolver[0].rotation = angleAxis(90.0f * QUAT_DEG2RAD, vec3(1, 0, 0));
 	mSolver[1].position = vec3(0, 0, 1.0f);
-	mSolver[2].position = vec3(0, 0, 1.5f);;
+	mSolver[2].position = vec3(0, 0, 1.5f);
+	;
 
 	mTarget.position = vec3(1, -2, 0);
 
@@ -21,16 +22,14 @@ void Chapter13Sample01::Initialize() {
 	mCamDist = 7.0f;
 }
 
-void Chapter13Sample01::Update(float deltaTime) {
-	mSolver.Solve(mTarget);
-}
+void Chapter13Sample01::Update(float deltaTime) { mSolver.Solve(mTarget); }
 
 void Chapter13Sample01::Render(float inAspectRatio) {
-	vec3 cameraPos(
-		mCamDist * cosf(mCamYaw * QUAT_DEG2RAD) * sinf(mCamPitch * QUAT_DEG2RAD),
-		mCamDist * cosf(mCamPitch * QUAT_DEG2RAD),
-		mCamDist * sinf(mCamYaw * QUAT_DEG2RAD) * sinf(mCamPitch * QUAT_DEG2RAD)
-	);
+	vec3 cameraPos(mCamDist * cosf(mCamYaw * QUAT_DEG2RAD) *
+					   sinf(mCamPitch * QUAT_DEG2RAD),
+				   mCamDist * cosf(mCamPitch * QUAT_DEG2RAD),
+				   mCamDist * sinf(mCamYaw * QUAT_DEG2RAD) *
+					   sinf(mCamPitch * QUAT_DEG2RAD));
 
 	mat4 projection = perspective(60.0f, inAspectRatio, 0.01f, 1000.0f);
 	mat4 view = lookAt(cameraPos, vec3(0, 0, 0), vec3(0, 1, 0));
@@ -65,10 +64,11 @@ void Chapter13Sample01::Shutdown() {
 	delete mTargetVisual[2];
 }
 
-void Chapter13Sample01::ImGui(nk_context* ctx) {
-	nk_begin(ctx, "Chapter 9, Sample 1", nk_rect(5.0f, 5.0f, 300.0f, 180.0f), NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR);
+void Chapter13Sample01::ImGui(nk_context *ctx) {
+	nk_begin(ctx, "Chapter 9, Sample 1", nk_rect(5.0f, 5.0f, 300.0f, 180.0f),
+			 NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR);
 
-	static const float layout[] = { 75, 200 };
+	static const float layout[] = {75, 200};
 	nk_layout_row(ctx, NK_STATIC, 25, 2, layout);
 
 	nk_label(ctx, "Target X:", NK_TEXT_LEFT);
