@@ -1,6 +1,7 @@
 # Created by ei06125 <ei06125@gcloud.fe.up.pt>
 build/
 .vs/
+.vscode/
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,linux,c,c++,visualstudio,visualstudiocode,clion,git,cmake
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,linux,c,c++,visualstudio,visualstudiocode,clion,git,cmake
@@ -233,10 +234,10 @@ _deps
 
 ### VisualStudioCode ###
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# !.vscode/settings.json
+# !.vscode/tasks.json
+# !.vscode/launch.json
+# !.vscode/extensions.json
 *.code-workspace
 
 # Local History for Visual Studio Code
